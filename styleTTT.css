@@ -1,0 +1,22 @@
+* {
+  transition: 0.3s ease;
+  font-size: 1rem;
+}
+
+body {
+  display: flex;
+  position: static;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(100deg, #555555, rgb(0, 0, 0));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0% 50%;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  color: red;
+}
