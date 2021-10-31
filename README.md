@@ -1,6 +1,6 @@
 JavaScript project. 
 
-Library. Alpha build.<br />
+Tic Tac Toe. Alpha build.<br />
 
 Update<br />
 //
