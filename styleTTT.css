@@ -1,6 +1,6 @@
 * {
   transition: 0.3s ease;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 body {
@@ -19,4 +19,62 @@ body {
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
   color: red;
+}
+
+.gameContainer {
+  display: flex;
+  position: static;
+  justify-content: center;
+  align-items: center;
+}
+
+.introMenu {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.introText {
+  text-decoration: underline;
+}
+
+.startGameBtn {
+  background-image: linear-gradient(100deg, #6189a0, rgb(179, 233, 255));
+  color: rgb(90, 0, 0);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 5px;
+}
+
+.gameGrid0,
+.gameGrid1,
+.gameGrid2 {
+  transition: 1s ease;
+  border: 5px outset red;
+}
+
+.gameGrid1 {
+  display: grid;
+  justify-content: start;
+  align-items: stretch;
+  align-self: center;  
+  align-content: stretch;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px 2px;
+}
+
+.gridSqr1,
+.gridSqr2,
+.gridSqr3,
+.gridSqr4,
+.gridSqr5,
+.gridSqr6,
+.gridSqr7,
+.gridSqr8,
+.gridSqr9 {
+  border: 5px outset red;
+  height: 100px;
+  width: 100px;
 }
