@@ -34,10 +34,28 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .introText {
   text-decoration: underline;
+  font-size: 1.8rem;
+}
+
+input[type=text] {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  text-align: center;
+  border: 2px outset red;
+  border-radius: 20px;
+  background-color: rgb(65, 65, 65);
+  color: white;
+  width: 270px;
+}
+
+input:required:invalid {
+  border-color: #009ac0;
 }
 
 .startGameBtn {
@@ -46,6 +64,7 @@ body {
   border-radius: 15px;
   padding: 10px;
   border-width: 5px;
+  margin-top: 50px;
 }
 
 .gameGrid0,
@@ -53,6 +72,24 @@ body {
 .gameGrid2 {
   transition: 1s ease;
   border: 5px outset red;
+}
+
+.gameGrid0,
+.gameGrid2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;  
+  flex-direction: column;
+  padding: 20px;
+}
+
+.gameGrid0 {
+  margin-right: 20px;
+}
+
+.gameGrid2 {
+  margin-left: 20px;
 }
 
 .gameGrid1 {
@@ -63,17 +100,18 @@ body {
   align-content: stretch;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px 2px;
+  padding: 20px;
 }
 
-.gridSqr1,
-.gridSqr2,
-.gridSqr3,
-.gridSqr4,
-.gridSqr5,
-.gridSqr6,
-.gridSqr7,
-.gridSqr8,
-.gridSqr9 {
+.sqr1,
+.sqr2,
+.sqr3,
+.sqr4,
+.sqr5,
+.sqr6,
+.sqr7,
+.sqr8,
+.sqr9 {
   border: 5px outset red;
   height: 100px;
   width: 100px;
