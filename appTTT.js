@@ -27,6 +27,11 @@ const gameBoard = (() => {
     gameBoardSqrs.push(GridGen(id))
   };
 
+  let players = [];
+  const addPlayer = (name) => {
+    players.push(PlayerGen(name));
+  };
+
   const removeMenuStartGame = () => {
 
     startGameBtn.addEventListener('click', () => {
@@ -58,14 +63,16 @@ const gameBoard = (() => {
           if (divs.classList.contains('gameGrid0')) {
             addName.textContent = `${player1Name.value}`;
             addScore.textContent = 0;
+            addPlayer(`${player1Name.value}`);
           } else if (divs.classList.contains('gameGrid2')) {
             addName.textContent = `${player2Name.value}`;
             addScore.textContent = 0;
-            console.log(true);
+            addPlayer(`${player2Name.value}`);
           };
 
           const createRestartBtn = document.createElement('button');
           createRestartBtn.classList.add('restartBtn');
+          createRestartBtn.textContent = 'RESTART';
           divs.appendChild(createRestartBtn);
           
         } else if (divs.classList.contains('gameGrid1')) {
@@ -81,11 +88,6 @@ const gameBoard = (() => {
     });
   };
 
-  let players = [];
-  const addPlayer = (name) => {
-    players.push(PlayerGen(name));
-  };
-
   const gameLogic = () => {
 
   }
@@ -98,5 +100,4 @@ const gameBoard = (() => {
   };
 })();
 gameBoard.removeMenuStartGame();
-gameBoard.addPlayer('Jack');
 

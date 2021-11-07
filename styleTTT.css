@@ -58,7 +58,8 @@ input:required:invalid {
   border-color: #009ac0;
 }
 
-.startGameBtn {
+.startGameBtn,
+.restartBtn {
   background-image: linear-gradient(100deg, #6189a0, rgb(179, 233, 255));
   color: rgb(90, 0, 0);
   border-radius: 15px;
