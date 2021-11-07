@@ -85,6 +85,21 @@ const gameBoard = (() => {
         };
       });
       form.reset();
+      restartGame();
+    });
+  };
+
+  const restartGame = () => {
+    const restartBtn = document.querySelector('.restartBtn');
+    restartBtn.addEventListener('click', () => {
+      const selectGameGrids = document.querySelectorAll('div');
+      selectGameGrids.forEach((divs) => {
+        if (divs.classList.contains('gameGrid0') || divs.classList.contains('gameGrid1') || divs.classList.contains('gameGrid2')) {
+          divs.remove();
+          players.pop();
+        }
+      });
+      introMenu.style.left = '39%';
     });
   };
 
@@ -94,7 +109,6 @@ const gameBoard = (() => {
 
   return {
     removeMenuStartGame,
-    addPlayer,
     gameBoardSqrs,
     players
   };
