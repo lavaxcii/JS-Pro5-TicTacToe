@@ -28,7 +28,14 @@ const gameBoard = (() => {
   };
 
   const removeMenuStartGame = () => {
+
     startGameBtn.addEventListener('click', () => {
+      const player1Name = document.querySelector('#player1Name');
+      const player2Name = document.querySelector('#player2Name');
+        if (player1Name.value === '' || player1Name.value === ' ' || player2Name.value === '' || player2Name.value === ' ') {
+          return;
+        };
+
       const form = document.querySelector('form');
       introMenu.style.left = '-50%';
       for (let i = 0; i < 3; i++) {
@@ -37,8 +44,7 @@ const gameBoard = (() => {
         gameContainer.appendChild(createDiv);
       };
 
-      const player1Name = document.querySelector('#player1Name');
-      const player2Name = document.querySelector('#player2Name');
+      
       const boardGrid = document.querySelectorAll('div');
       boardGrid.forEach((divs) => {
         if (divs.classList.contains('gameGrid0') || divs.classList.contains('gameGrid2')) {
