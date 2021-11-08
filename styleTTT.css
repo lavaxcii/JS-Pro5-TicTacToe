@@ -113,7 +113,20 @@ input:required:invalid {
 .sqr7,
 .sqr8,
 .sqr9 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center; 
   border: 5px outset red;
   height: 100px;
   width: 100px;
+}
+
+.fa-times {
+  color: yellowgreen;
+  font-size: 3rem;
+}
+.fa-circle {
+  color: blueviolet;
+  font-size: 2.5rem;
 }
