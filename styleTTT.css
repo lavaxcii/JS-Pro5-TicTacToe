@@ -42,6 +42,11 @@ body {
   font-size: 1.8rem;
 }
 
+label { 
+  width: 125px;
+  margin-left: 10px;
+}
+
 input[type=text] {
   -webkit-appearance: none;
   appearance: none;
@@ -56,6 +61,21 @@ input[type=text] {
 
 input:required:invalid {
   border-color: #009ac0;
+}
+
+.gameOptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;  
+  flex-direction: row;
+  margin-top: 25px;
+}
+
+input[type=radio] {
+  margin: 15px;
+  transform: scale(2);
+  background-color: green;
 }
 
 .startGameBtn,

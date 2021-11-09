@@ -33,6 +33,15 @@
         <p class="playerName">Enter player 2 name:</p>
         <input id='player2Name' type="text" type="text"
         value='Duonator' required maxlength='15'>
+        <div class="gameOptions">
+          <label for="pvp">Against Player</label>
+          <input type="radio" id="gopvp" name="go" value="gameModePvp" checked>
+          <label for="pvairnd">Against AI (random)</label>
+          <input type="radio" id="gopvairnd" name="go"
+          value="gameModePvairnd">
+          <label for="pvaismart">Against AI (smart)</label>
+          <input type="radio" id="gopvaismart" name="go" value="gameModePvaismart" >
+        </div>
       </form>
       <button class="startGameBtn">START GAME</button>
     </div>
