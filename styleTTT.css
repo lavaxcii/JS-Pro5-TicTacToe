@@ -150,3 +150,15 @@ input[type=radio] {
   color: blueviolet;
   font-size: 2.5rem;
 }
+
+.winMessage {
+  transition: 1s ease;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center; 
+  font-size: 2rem;
+  background-color: aquamarine;
+  color: red;
+}
