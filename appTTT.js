@@ -24,6 +24,7 @@ const gameBoard = (() => {
   const gameContainer = document.querySelector('.gameContainer');
   const introMenu = document.querySelector('.introMenu');
   const startGameBtn = document.querySelector('.startGameBtn');
+  let sqrCounter = 1;
 
   let gameBoardSqrs = [];
   const addSqrs = (id) => {
@@ -33,16 +34,6 @@ const gameBoard = (() => {
   let players = [];
   const addPlayer = (name) => {
     players.push(PlayerGen(name));
-  };
-
-  const initializeGame = () => {
-    startGameBtn.addEventListener('click', () => {
-      const userGameOptionChoice = document.querySelector('input[name="go"]:checked').value;
-      let remeberGameMode2 = '';
-      removeMenu();
-      addPlayerAndGameGrid(userGameOptionChoice);
-      enableRestartGame();
-    });
   };
 
   const removeMenu = () => {
@@ -138,8 +129,6 @@ const gameBoard = (() => {
   const winConditions = (clicked) => {
     const winMessage = document.createElement('p');
     winMessage.classList.add('winMessage');
-    winMessage.textContent = 'Winner is player!'
-    // gameContainer.appendChild(winMessage);
     const selectPlayersScore = document.querySelectorAll('.playerP2');
     const boardGrid = document.querySelectorAll('div');
 
@@ -170,10 +159,19 @@ const gameBoard = (() => {
           let newScore = players[0].score + 1;
           players[0].score = newScore;
           playerScore.textContent = players[0].score;
-          resetGameBoard();
+          sqrCounter = 1;
+
+          winMessage.textContent = `Winner is ${players[0].name}!`
+          gameContainer.appendChild(winMessage);
+          const selectWinMessage = document.querySelector('.winMessage');
+
+          setTimeout(() => {
+            selectWinMessage.remove();
+            resetGameBoard();
+          }, 1500)
           return;
-        }
-      })
+        };
+      });
     } else if ((gameBoardSqrs[0].player2Sqr && gameBoardSqrs[1].player2Sqr  &&gameBoardSqrs[2].player2Sqr === true) || (gameBoardSqrs[3].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[5].player2Sqr === true) || (gameBoardSqrs[6].player2Sqr && gameBoardSqrs[7].player2Sqr  && gameBoardSqrs[8].player2Sqr === true) || (gameBoardSqrs[0].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[8].player2Sqr === true) || (gameBoardSqrs[2].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[6].player2Sqr === true) || (gameBoardSqrs[0].player2Sqr && gameBoardSqrs[3].player2Sqr  && gameBoardSqrs[6].player2Sqr === true) || (gameBoardSqrs[1].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[7].player2Sqr === true) || (gameBoardSqrs[2].player2Sqr && gameBoardSqrs[5].player2Sqr  && gameBoardSqrs[8].player2Sqr === true)) {
       const selectGameBoardGrid = document.querySelector('.gameGrid1');
       selectGameBoardGrid.style.pointerEvents = 'none';
@@ -182,15 +180,37 @@ const gameBoard = (() => {
           let newScore = players[1].score + 1;
           players[1].score = newScore;
           playerScore.textContent = players[1].score;
-          resetGameBoard();
-          return;
-        }
-      })
-    } else {
-      console.log('Nobody wins!? (sadFace)')
-    }
+          sqrCounter = 1;
 
-  }
+          winMessage.textContent = `Winner is ${players[1].name}!`
+          gameContainer.appendChild(winMessage);
+          const selectWinMessage = document.querySelector('.winMessage');
+
+          setTimeout(() => {
+            selectWinMessage.remove();
+            resetGameBoard();
+          }, 1500)
+          return;
+        };
+      });
+    } else {
+      console.log(sqrCounter);
+      if (sqrCounter === 9) {
+          winMessage.textContent = `Winner is you, the observer <3!`
+          gameContainer.appendChild(winMessage);
+          const selectWinMessage = document.querySelector('.winMessage');
+
+          setTimeout(() => {
+            selectWinMessage.remove();
+            resetGameBoard();
+          }, 1500)
+        sqrCounter = 1;
+        return;
+      }
+      sqrCounter++
+      return;
+    };
+  };
 
   const startGameMode = (userGameOptionChoice) => {
 
@@ -249,9 +269,17 @@ const gameBoard = (() => {
         });
         n++;
       };
-
     });
+  };
 
+  const initializeGame = () => {
+    startGameBtn.addEventListener('click', () => {
+      const userGameOptionChoice = document.querySelector('input[name="go"]:checked').value;
+      let remeberGameMode2 = '';
+      removeMenu();
+      addPlayerAndGameGrid(userGameOptionChoice);
+      enableRestartGame();
+    });
   };
 
   return {

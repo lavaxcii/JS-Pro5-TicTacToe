@@ -158,7 +158,13 @@ input[type=radio] {
   justify-content: center;
   align-items: center;
   align-self: center; 
+  text-align: center;
   font-size: 2rem;
-  background-color: aquamarine;
+  background-color: black;
+  opacity: 0.8;
   color: red;
+  padding: 15px;
+  border-radius: 15px;
+  width: 500px;
+  margin: 0;
 }
