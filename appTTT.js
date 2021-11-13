@@ -25,6 +25,8 @@ const gameBoard = (() => {
   const introMenu = document.querySelector('.introMenu');
   const startGameBtn = document.querySelector('.startGameBtn');
   let sqrCounter = 1;
+  let player1winStatus = false;
+  let clickedSameSqr = false;
 
   let gameBoardSqrs = [];
   const addSqrs = (id) => {
@@ -126,7 +128,7 @@ const gameBoard = (() => {
     })
   };
 
-  const winConditions = (clicked) => {
+  const winConditions = () => {
     const winMessage = document.createElement('p');
     winMessage.classList.add('winMessage');
     const selectPlayersScore = document.querySelectorAll('.playerP2');
@@ -142,11 +144,13 @@ const gameBoard = (() => {
           deleteGameGrid(divs);
           gameBoardSqrs.splice(0);
           n++;
+          console.log('DELETED BOARD AFTER ROUND!')
         };
       });
       boardGrid.forEach((divs) => {
         if (divs.classList.contains('gameGrid1')) {
           createGameGrid(divs);
+          console.log('CREATED BOARD AFTER ROUND!')
         };
       });
     };
@@ -164,6 +168,30 @@ const gameBoard = (() => {
           winMessage.textContent = `Winner is ${players[0].name}!`
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
+          player1winStatus = true;
+
+          setTimeout(() => {
+            selectWinMessage.remove();
+            resetGameBoard();
+            player1winStatus = false;
+          }, 1500)
+          console.log('Player1 WON!')
+          return;
+        };
+      });
+    } else if ((gameBoardSqrs[0].player2Sqr && gameBoardSqrs[1].player2Sqr  &&gameBoardSqrs[2].player2Sqr === true) || (gameBoardSqrs[3].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[5].player2Sqr === true) || (gameBoardSqrs[6].player2Sqr && gameBoardSqrs[7].player2Sqr  && gameBoardSqrs[8].player2Sqr === true) || (gameBoardSqrs[0].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[8].player2Sqr === true) || (gameBoardSqrs[2].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[6].player2Sqr === true) || (gameBoardSqrs[0].player2Sqr && gameBoardSqrs[3].player2Sqr  && gameBoardSqrs[6].player2Sqr === true) || (gameBoardSqrs[1].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[7].player2Sqr === true) || (gameBoardSqrs[2].player2Sqr && gameBoardSqrs[5].player2Sqr  && gameBoardSqrs[8].player2Sqr === true)) {
+      const selectGameBoardGrid = document.querySelector('.gameGrid1');
+      selectGameBoardGrid.style.pointerEvents = 'none';
+      selectPlayersScore.forEach((playerScore) => {
+        if (playerScore.parentElement.classList.contains('gameGrid2')) {
+          let newScore = players[1].score + 1;
+          players[1].score = newScore;
+          playerScore.textContent = players[1].score;
+          sqrCounter = 1;
+
+          winMessage.textContent = `Winner is ${players[1].name}!`
+          gameContainer.appendChild(winMessage);
+          const selectWinMessage = document.querySelector('.winMessage');
 
           setTimeout(() => {
             selectWinMessage.remove();
@@ -172,7 +200,7 @@ const gameBoard = (() => {
           return;
         };
       });
-    } else if ((gameBoardSqrs[0].player2Sqr && gameBoardSqrs[1].player2Sqr  &&gameBoardSqrs[2].player2Sqr === true) || (gameBoardSqrs[3].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[5].player2Sqr === true) || (gameBoardSqrs[6].player2Sqr && gameBoardSqrs[7].player2Sqr  && gameBoardSqrs[8].player2Sqr === true) || (gameBoardSqrs[0].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[8].player2Sqr === true) || (gameBoardSqrs[2].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[6].player2Sqr === true) || (gameBoardSqrs[0].player2Sqr && gameBoardSqrs[3].player2Sqr  && gameBoardSqrs[6].player2Sqr === true) || (gameBoardSqrs[1].player2Sqr && gameBoardSqrs[4].player2Sqr  && gameBoardSqrs[7].player2Sqr === true) || (gameBoardSqrs[2].player2Sqr && gameBoardSqrs[5].player2Sqr  && gameBoardSqrs[8].player2Sqr === true)) {
+    } else if ((gameBoardSqrs[0].aiSqr && gameBoardSqrs[1].aiSqr  &&gameBoardSqrs[2].aiSqr === true) || (gameBoardSqrs[3].aiSqr && gameBoardSqrs[4].aiSqr  && gameBoardSqrs[5].aiSqr === true) || (gameBoardSqrs[6].aiSqr && gameBoardSqrs[7].aiSqr  && gameBoardSqrs[8].aiSqr === true) || (gameBoardSqrs[0].aiSqr && gameBoardSqrs[4].aiSqr  && gameBoardSqrs[8].aiSqr === true) || (gameBoardSqrs[2].aiSqr && gameBoardSqrs[4].aiSqr  && gameBoardSqrs[6].aiSqr === true) || (gameBoardSqrs[0].aiSqr && gameBoardSqrs[3].aiSqr  && gameBoardSqrs[6].aiSqr === true) || (gameBoardSqrs[1].aiSqr && gameBoardSqrs[4].aiSqr  && gameBoardSqrs[7].aiSqr === true) || (gameBoardSqrs[2].aiSqr && gameBoardSqrs[5].aiSqr  && gameBoardSqrs[8].aiSqr === true)) {
       const selectGameBoardGrid = document.querySelector('.gameGrid1');
       selectGameBoardGrid.style.pointerEvents = 'none';
       selectPlayersScore.forEach((playerScore) => {
@@ -219,7 +247,9 @@ const gameBoard = (() => {
 
     let player1status = false;
     let player2status = true;
+    let player2AiRndStatus = false;
     let n = 1;
+
 
     if (n === 10) {
       n = 1;
@@ -237,7 +267,7 @@ const gameBoard = (() => {
           addXToSqr.classList.add('fas');
           addXToSqr.classList.add('fa-times');
           selectGameSqrs.appendChild(addXToSqr);
-          winConditions(clicked);
+          winConditions();
         } else if (player2status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id) {
           gameBoardSqrs[`${n2}`].player2Sqr = true;
           gameBoardSqrs[`${n2}`].sqrStatusLocked = true;
@@ -248,9 +278,70 @@ const gameBoard = (() => {
           addOToSqr.classList.add('far');
           addOToSqr.classList.add('fa-circle');
           selectGameSqrs.appendChild(addOToSqr);
-          winConditions(clicked);
+          winConditions();
         };
       };
+    };
+
+    const gameModePvairnd = (clicked) => {
+      for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
+        if (gameBoardSqrs[`${n2}`].sqrStatusLocked === true && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id || clicked.target.classList[0] === 'fas') {
+          console.log('i clicked same again')
+          clickedSameSqr = true;
+        }
+      }
+      for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
+        if (player1status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id) {
+          
+
+          gameBoardSqrs[`${n2}`].playerSqr = true;
+          gameBoardSqrs[`${n2}`].sqrStatusLocked = true;
+          player1status = true;
+          player2AiRndStatus = false;
+          const addXToSqr = document.createElement('i');
+          const selectGameSqrs = document.querySelector(`.${clicked.target.classList[0]}`);
+          addXToSqr.classList.add('fas');
+          addXToSqr.classList.add('fa-times');
+          selectGameSqrs.appendChild(addXToSqr);
+          winConditions();
+        };
+      };
+      console.log(clickedSameSqr)
+
+      let rndSqrAi = Math.floor(Math.random() * 9) + 0;
+      if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === true && player1winStatus === false && clickedSameSqr === false) {
+        do {
+          console.log('SEARCHING FOR FREE SQUARE')
+          rndSqrAi = Math.floor(Math.random() * 9) + 0
+        } while (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === true)
+        console.log(`FREE SQUARE IS: ${gameBoardSqrs[rndSqrAi].id}`)
+        gameBoardSqrs[`${rndSqrAi}`].aiSqr = true;
+        gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked = true;
+        player2AiRndStatus = true;
+        player1status = false;
+        const addOToSqr = document.createElement('i');
+        const selectGameSqrs = document.querySelector(`.${gameBoardSqrs[rndSqrAi].id}`);
+        console.log(`AI SELECTED: ${gameBoardSqrs[rndSqrAi].id}`);
+        addOToSqr.classList.add('far');
+        addOToSqr.classList.add('fa-circle');
+        selectGameSqrs.appendChild(addOToSqr);
+        winConditions();
+      } else if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === false &&player1winStatus === false && clickedSameSqr === false) {
+        console.log(`FREE SQUARE IS: ${gameBoardSqrs[rndSqrAi].id}`)
+        gameBoardSqrs[`${rndSqrAi}`].aiSqr = true;
+        gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked = true;
+        player2AiRndStatus = true;
+        player1status = false;
+        const addOToSqr = document.createElement('i');
+        const selectGameSqrs = document.querySelector(`.${gameBoardSqrs[rndSqrAi].id}`);
+        console.log(`AI SELECTED: ${gameBoardSqrs[rndSqrAi].id}`);
+        addOToSqr.classList.add('far');
+        addOToSqr.classList.add('fa-circle');
+        selectGameSqrs.appendChild(addOToSqr);
+        winConditions();
+      }
+      clickedSameSqr = false;
+      console.log(clickedSameSqr)
     };
 
     const selectGameSqrs = document.querySelectorAll('div');
@@ -262,7 +353,7 @@ const gameBoard = (() => {
           if (userGameOptionChoice === 'gameModePvp') {
             gameModePvp(clicked);
           } else if (userGameOptionChoice === 'gameModePvairnd') {
-            console.log('Hey random boy!');
+            gameModePvairnd(clicked);
           } else if (userGameOptionChoice === 'gameModePvaismart') {
             console.log('Hey smart boy!');
           };
