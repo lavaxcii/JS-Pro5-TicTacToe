@@ -27,6 +27,7 @@ const gameBoard = (() => {
   let sqrCounter = 1;
   let player1winStatus = false;
   let clickedSameSqr = false;
+  let roundStatusQuo = false;
 
   let gameBoardSqrs = [];
   const addSqrs = (id) => {
@@ -124,6 +125,7 @@ const gameBoard = (() => {
         players.splice(0);
         gameBoardSqrs.splice(0);
         introMenu.style.left = '35%';
+        sqrCounter = 1;
       });
     })
   };
@@ -139,6 +141,7 @@ const gameBoard = (() => {
       if (n === 10) {
         n = 1;
       };
+      sqrCounter = 1;
       boardGrid.forEach((divs) => {
         if (divs.classList.contains(`sqr${n}`)) {
           deleteGameGrid(divs);
@@ -233,6 +236,7 @@ const gameBoard = (() => {
             resetGameBoard();
           }, 1500)
         sqrCounter = 1;
+        roundStatusQuo = true;
         return;
       }
       sqrCounter++
@@ -257,7 +261,13 @@ const gameBoard = (() => {
 
     const gameModePvp = (clicked) => {
       for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
-        if (player1status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id) {
+        if (gameBoardSqrs[`${n2}`].sqrStatusLocked === true && (clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id || clicked.target.classList[0] === 'fas' || clicked.target.classList[0] === 'far')) {
+          console.log('i clicked same again')
+          clickedSameSqr = true;
+        };
+      };
+      for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
+        if (player1status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id && clickedSameSqr === false) {
           gameBoardSqrs[`${n2}`].playerSqr = true;
           gameBoardSqrs[`${n2}`].sqrStatusLocked = true;
           player1status = true;
@@ -268,7 +278,7 @@ const gameBoard = (() => {
           addXToSqr.classList.add('fa-times');
           selectGameSqrs.appendChild(addXToSqr);
           winConditions();
-        } else if (player2status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id) {
+        } else if (player2status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id && clickedSameSqr === false) {
           gameBoardSqrs[`${n2}`].player2Sqr = true;
           gameBoardSqrs[`${n2}`].sqrStatusLocked = true;
           player2status = true;
@@ -281,19 +291,20 @@ const gameBoard = (() => {
           winConditions();
         };
       };
+      clickedSameSqr = false;
+      roundStatusQuo = false;
     };
 
     const gameModePvairnd = (clicked) => {
       for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
-        if (gameBoardSqrs[`${n2}`].sqrStatusLocked === true && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id || clicked.target.classList[0] === 'fas') {
+        if (gameBoardSqrs[`${n2}`].sqrStatusLocked === true && (clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id || clicked.target.classList[0] === 'fas' || clicked.target.classList[0] === 'far')) {
           console.log('i clicked same again')
           clickedSameSqr = true;
-        }
-      }
-      for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
-        if (player1status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id) {
-          
+        };
+      };
 
+      for (let n2 = 0; n2 < gameBoardSqrs.length; n2++) {
+        if (player1status === false && gameBoardSqrs[`${n2}`].sqrStatusLocked === false && clicked.target.classList[0] === gameBoardSqrs[`${n2}`].id && clickedSameSqr === false) {
           gameBoardSqrs[`${n2}`].playerSqr = true;
           gameBoardSqrs[`${n2}`].sqrStatusLocked = true;
           player1status = true;
@@ -306,14 +317,17 @@ const gameBoard = (() => {
           winConditions();
         };
       };
-      console.log(clickedSameSqr)
+
+      console.log('STATUS QUO: ' + roundStatusQuo)
 
       let rndSqrAi = Math.floor(Math.random() * 9) + 0;
-      if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === true && player1winStatus === false && clickedSameSqr === false) {
+      if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === true && player1winStatus === false && clickedSameSqr === false && roundStatusQuo === false) {
+        
         do {
           console.log('SEARCHING FOR FREE SQUARE')
           rndSqrAi = Math.floor(Math.random() * 9) + 0
         } while (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === true)
+        
         console.log(`FREE SQUARE IS: ${gameBoardSqrs[rndSqrAi].id}`)
         gameBoardSqrs[`${rndSqrAi}`].aiSqr = true;
         gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked = true;
@@ -326,7 +340,7 @@ const gameBoard = (() => {
         addOToSqr.classList.add('fa-circle');
         selectGameSqrs.appendChild(addOToSqr);
         winConditions();
-      } else if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === false &&player1winStatus === false && clickedSameSqr === false) {
+      } else if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === false &&player1winStatus === false && clickedSameSqr === false && roundStatusQuo === false) {
         console.log(`FREE SQUARE IS: ${gameBoardSqrs[rndSqrAi].id}`)
         gameBoardSqrs[`${rndSqrAi}`].aiSqr = true;
         gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked = true;
@@ -341,6 +355,7 @@ const gameBoard = (() => {
         winConditions();
       }
       clickedSameSqr = false;
+      roundStatusQuo = false;
       console.log(clickedSameSqr)
     };
 
