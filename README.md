@@ -4,7 +4,8 @@ Tic Tac Toe. Final build.<br />
 
 Update<br />
 1.1<br />
-Added functional random AI
+Added functional random AI<br />
+
 1.2<br />
 Added functional smart AI<br />
 
