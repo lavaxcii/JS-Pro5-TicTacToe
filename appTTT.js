@@ -102,14 +102,14 @@ const gameBoard = (() => {
           addName.textContent = `${player1Name.value}`;
           addScore.textContent = 0;
           divs.insertBefore(addPlayerImage, addName);
-          document.querySelector('.playerImagesgameGrid0').setAttribute('src', '/pics/playerPic.png');
+          document.querySelector('.playerImagesgameGrid0').setAttribute('src', './pics/playerPic.png');
           addPlayer(`${player1Name.value}`);
         } else if (divs.classList.contains('gameGrid2')) {
           addPlayerImage.classList.add(`playerImages${divs.classList[0]}`);
           addName.textContent = `${player2Name.value}`;
           addScore.textContent = 0;
           divs.insertBefore(addPlayerImage, addName);
-          document.querySelector('.playerImagesgameGrid2').setAttribute('src', '/pics/aiPic.png');
+          document.querySelector('.playerImagesgameGrid2').setAttribute('src', './pics/aiPic.png');
           addPlayer(`${player2Name.value}`);
         };
 
