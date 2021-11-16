@@ -87,8 +87,8 @@ const gameBoard = (() => {
     const boardGrid = document.querySelectorAll('div');
     boardGrid.forEach((divs) => {
       if (divs.classList.contains('gameGrid0') || divs.classList.contains('gameGrid2')) {
+        
         const addPlayerImage = document.createElement('img');
-
         for (let i = 1; i <= 2; i++) {
           const createP = document.createElement('p');
           createP.classList.add(`playerP${i}`);
