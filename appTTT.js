@@ -87,27 +87,38 @@ const gameBoard = (() => {
     const boardGrid = document.querySelectorAll('div');
     boardGrid.forEach((divs) => {
       if (divs.classList.contains('gameGrid0') || divs.classList.contains('gameGrid2')) {
+        const addPlayerImage = document.createElement('img');
+
         for (let i = 1; i <= 2; i++) {
           const createP = document.createElement('p');
           createP.classList.add(`playerP${i}`);
           divs.appendChild(createP);
         }
+        
         const addName = divs.querySelector(`.playerP1`);
         const addScore = divs.querySelector(`.playerP2`);
         if (divs.classList.contains('gameGrid0')) {
+          addPlayerImage.classList.add(`playerImages${divs.classList[0]}`);
           addName.textContent = `${player1Name.value}`;
           addScore.textContent = 0;
+          divs.insertBefore(addPlayerImage, addName);
+          document.querySelector('.playerImagesgameGrid0').setAttribute('src', '/pics/playerPic.png');
           addPlayer(`${player1Name.value}`);
         } else if (divs.classList.contains('gameGrid2')) {
+          addPlayerImage.classList.add(`playerImages${divs.classList[0]}`);
           addName.textContent = `${player2Name.value}`;
           addScore.textContent = 0;
+          divs.insertBefore(addPlayerImage, addName);
+          document.querySelector('.playerImagesgameGrid2').setAttribute('src', '/pics/aiPic.png');
           addPlayer(`${player2Name.value}`);
         };
 
         const createRestartBtn = document.createElement('button');
+        const createRestartIcon = document.createElement('i');
+        createRestartIcon.classList.add('fas');
+        createRestartIcon.classList.add('fa-undo-alt');
         createRestartBtn.classList.add('restartBtn');
-        createRestartBtn.textContent = 'RESTART';
-        divs.appendChild(createRestartBtn);
+        divs.appendChild(createRestartBtn).appendChild(createRestartIcon);
 
       } else if (divs.classList.contains('gameGrid1')) {
         createGameGrid(divs, userGameOptionChoice);
@@ -171,7 +182,7 @@ const gameBoard = (() => {
           playerScore.textContent = players[0].score;
           sqrCounter = 1;
 
-          winMessage.textContent = `Winner is ${players[0].name}!`
+          winMessage.textContent = `Hasta la vista ${players[1].name}!`
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
           player1winStatus = true;
@@ -195,7 +206,7 @@ const gameBoard = (() => {
           playerScore.textContent = players[1].score;
           sqrCounter = 1;
 
-          winMessage.textContent = `Winner is ${players[1].name}!`
+          winMessage.textContent = `Hasta la vista ${players[0].name}!`
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
 
@@ -216,7 +227,7 @@ const gameBoard = (() => {
           playerScore.textContent = players[1].score;
           sqrCounter = 1;
 
-          winMessage.textContent = `Winner is ${players[1].name}!`
+          winMessage.textContent = `Hasta la vista ${players[0].name}!`
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
 
@@ -230,7 +241,7 @@ const gameBoard = (() => {
     } else {
       console.log(sqrCounter);
       if (sqrCounter === 9) {
-          winMessage.textContent = `Winner is you, the observer <3!`
+          winMessage.textContent = `Hasta la vista puppy observer <3!`
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
 
@@ -339,9 +350,13 @@ const gameBoard = (() => {
         const addOToSqr = document.createElement('i');
         const selectGameSqrs = document.querySelector(`.${gameBoardSqrs[rndSqrAi].id}`);
         console.log(`AI SELECTED: ${gameBoardSqrs[rndSqrAi].id}`);
-        addOToSqr.classList.add('far');
-        addOToSqr.classList.add('fa-circle');
-        selectGameSqrs.appendChild(addOToSqr);
+
+        setTimeout(() => {
+          addOToSqr.classList.add('far');
+          addOToSqr.classList.add('fa-circle');
+          selectGameSqrs.appendChild(addOToSqr);
+        }, 500);
+        
         winConditions();
       } else if (gameBoardSqrs[`${rndSqrAi}`].sqrStatusLocked === false &&player1winStatus === false && clickedSameSqr === false && roundStatusQuo === false) {
         console.log(`FREE SQUARE IS: ${gameBoardSqrs[rndSqrAi].id}`)
@@ -352,9 +367,13 @@ const gameBoard = (() => {
         const addOToSqr = document.createElement('i');
         const selectGameSqrs = document.querySelector(`.${gameBoardSqrs[rndSqrAi].id}`);
         console.log(`AI SELECTED: ${gameBoardSqrs[rndSqrAi].id}`);
-        addOToSqr.classList.add('far');
-        addOToSqr.classList.add('fa-circle');
-        selectGameSqrs.appendChild(addOToSqr);
+        
+        setTimeout(() => {
+          addOToSqr.classList.add('far');
+          addOToSqr.classList.add('fa-circle');
+          selectGameSqrs.appendChild(addOToSqr);
+        }, 500);
+
         winConditions();
       }
       clickedSameSqr = false;
@@ -480,9 +499,13 @@ const gameBoard = (() => {
         const addOToSqr = document.createElement('i');
         const selectGameSqrs = document.querySelector(`.${gameBoardSqrs[4].id}`);
         console.log(`AI SELECTED: ${gameBoardSqrs[4].id}`);
-        addOToSqr.classList.add('far');
-        addOToSqr.classList.add('fa-circle');
-        selectGameSqrs.appendChild(addOToSqr);
+        
+        setTimeout(() => {
+          addOToSqr.classList.add('far');
+          addOToSqr.classList.add('fa-circle');
+          selectGameSqrs.appendChild(addOToSqr);
+        }, 500);
+
         winConditions();
       } else if (player1winStatus === false && clickedSameSqr === false && roundStatusQuo === false) {
         let smartAiChoice = '';
@@ -540,11 +563,15 @@ const gameBoard = (() => {
         const addOToSqr = document.createElement('i');
         const selectGameSqrs = document.querySelector(`.${gameBoardSqrs[smartAiChoice].id}`);
         console.log(`AI SELECTED: ${gameBoardSqrs[smartAiChoice].id}`);
-        addOToSqr.classList.add('far');
-        addOToSqr.classList.add('fa-circle');
-        selectGameSqrs.appendChild(addOToSqr);
+        
+        setTimeout(() => {
+          addOToSqr.classList.add('far');
+          addOToSqr.classList.add('fa-circle');
+          selectGameSqrs.appendChild(addOToSqr);
+        }, 500);
+        
         winConditions();
-      }
+      };
       clickedSameSqr = false;
       roundStatusQuo = false;
     };

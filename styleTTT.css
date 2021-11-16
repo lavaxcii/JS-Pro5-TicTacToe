@@ -11,7 +11,7 @@ body {
   flex-direction: row;
   height: 100vh;
   width: 100vw;
-  background-image: linear-gradient(100deg, #555555, rgb(0, 0, 0));
+  background-image: url('./pics/backgroundFire.jpg'), linear-gradient(100deg, #555555, rgb(0, 0, 0));
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -19,6 +19,11 @@ body {
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
   color: red;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+
+p {
+  margin: 5px;
 }
 
 .gameContainer {
@@ -35,11 +40,16 @@ body {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  background-image: linear-gradient(100deg, #c5c5c5, rgba(134, 134, 134, 0.288));
+  border-radius: 200px;
+  padding-bottom: 25px;;
 }
 
 .introText {
   text-decoration: underline;
   font-size: 1.8rem;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 label { 
@@ -52,9 +62,9 @@ input[type=text] {
   appearance: none;
   outline: none;
   text-align: center;
-  border: 2px outset red;
+  border: 5px outset red;
   border-radius: 20px;
-  background-color: rgb(65, 65, 65);
+  background-color: rgb(0, 0, 0);
   color: white;
   width: 270px;
 }
@@ -75,17 +85,22 @@ input:required:invalid {
 input[type=radio] {
   margin: 15px;
   transform: scale(2);
-  background-color: green;
 }
 
 .startGameBtn,
 .restartBtn {
   background-image: linear-gradient(100deg, #6189a0, rgb(179, 233, 255));
-  color: rgb(90, 0, 0);
-  border-radius: 15px;
+  color: rgb(255, 0, 0);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  border-radius: 150px;
   padding: 10px;
   border-width: 5px;
-  margin-top: 50px;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.restartBtn {
+  margin-top: 20px;
 }
 
 .gameGrid0,
@@ -103,10 +118,19 @@ input[type=radio] {
   align-self: center;  
   flex-direction: column;
   padding: 20px;
+  background-image: linear-gradient(100deg, #c5c5c5, rgba(134, 134, 134, 0.548));
+  border-radius: 100px;
 }
 
 .gameGrid0 {
   margin-right: 20px;
+}
+
+.playerImagesgameGrid0,
+.playerImagesgameGrid2 {
+  width: 125px;
+  height: 125px;
+  margin-bottom: 0;
 }
 
 .gameGrid2 {
@@ -114,6 +138,7 @@ input[type=radio] {
 }
 
 .gameGrid1 {
+  border: none;
   display: grid;
   justify-content: start;
   align-items: stretch;
