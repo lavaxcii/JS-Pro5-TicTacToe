@@ -26,7 +26,9 @@ const gameBoard = (() => {
   const gameContainer = document.querySelector('.gameContainer');
   const introMenu = document.querySelector('.introMenu');
   const startGameBtn = document.querySelector('.startGameBtn');
-  let aiSqrSelection = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  const roundEndSound = document.querySelector('.roundEnd');
+  const ambientSound = document.querySelector('.ambient');
+  ambientSound.play();
   let sqrCounter = 1;
   let player1winStatus = false;
   let clickedSameSqr = false;
@@ -187,11 +189,13 @@ const gameBoard = (() => {
           const selectWinMessage = document.querySelector('.winMessage');
           player1winStatus = true;
 
+          roundEndSound.play();
+
           setTimeout(() => {
             selectWinMessage.remove();
             resetGameBoard();
             player1winStatus = false;
-          }, 1500)
+          }, 2000)
           console.log('Player1 WON!')
           return;
         };
@@ -210,10 +214,12 @@ const gameBoard = (() => {
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
 
+          roundEndSound.play();
+
           setTimeout(() => {
             selectWinMessage.remove();
             resetGameBoard();
-          }, 1500)
+          }, 2000)
           return;
         };
       });
@@ -231,10 +237,12 @@ const gameBoard = (() => {
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
 
+          roundEndSound.play();
+
           setTimeout(() => {
             selectWinMessage.remove();
             resetGameBoard();
-          }, 1500)
+          }, 2000)
           return;
         };
       });
@@ -244,6 +252,8 @@ const gameBoard = (() => {
           winMessage.textContent = `Hasta la vista puppy observer <3!`
           gameContainer.appendChild(winMessage);
           const selectWinMessage = document.querySelector('.winMessage');
+          
+          roundEndSound.play();
 
           setTimeout(() => {
             selectWinMessage.remove();
