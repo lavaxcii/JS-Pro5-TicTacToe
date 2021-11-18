@@ -42,7 +42,8 @@ p {
   text-align: center;
   background-image: linear-gradient(100deg, #c5c5c5, rgba(134, 134, 134, 0.288));
   border-radius: 200px;
-  padding-bottom: 25px;;
+  padding-bottom: 25px;
+  transition: 1s ease;
 }
 
 .introText {
