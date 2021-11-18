@@ -52,7 +52,7 @@ const gameBoard = (() => {
     };
 
     const form = document.querySelector('form');
-    introMenu.style.left = '-50%';
+    introMenu.style.left = '-150%';
     for (let i = 0; i < 3; i++) {
       const createDiv = document.createElement('div');
       createDiv.classList.add(`gameGrid${i}`);
@@ -140,7 +140,7 @@ const gameBoard = (() => {
         });
         players.splice(0);
         gameBoardSqrs.splice(0);
-        introMenu.style.left = '32%';
+        introMenu.style.left = 'auto';
         sqrCounter = 1;
       });
     })
@@ -410,11 +410,15 @@ const gameBoard = (() => {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
           gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
           gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
+          gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
         };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
       } else if (sqrId === 'sqr3') {
+        if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
+          gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
+        };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue1;
         gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue1;
@@ -425,6 +429,9 @@ const gameBoard = (() => {
         gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue1;
       } else if (sqrId === 'sqr4') {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
+          gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
+          gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
+          gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
           gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
         };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
@@ -444,6 +451,10 @@ const gameBoard = (() => {
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
         gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue2;
       } else if (sqrId === 'sqr7') {
+        if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
+          gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
+          gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
+        };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue1;
         gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue1;
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue1;
@@ -454,6 +465,7 @@ const gameBoard = (() => {
         gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue1;
       } else if (sqrId === 'sqr8') {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
+          gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
           gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
           gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
           console.log('I ERECET POINTS')
