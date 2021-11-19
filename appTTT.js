@@ -448,6 +448,9 @@ const gameBoard = (() => {
           gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
           gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
         };
+        if (gameBoardSqrs[3].sqrStatusLocked === true && gameBoardSqrs[3].playerSqr === true && gameBoardSqrs[6].sqrStatusLocked === true && gameBoardSqrs[6].playerSqr === true) {
+          gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
+        }
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
         gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
