@@ -464,6 +464,7 @@ const gameBoard = (() => {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
           gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
           gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
+          gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
         };
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
