@@ -399,6 +399,7 @@ const gameBoard = (() => {
           gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue2;
         };
         gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
+        gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue1;
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
@@ -415,11 +416,13 @@ const gameBoard = (() => {
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
+        gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;         
       } else if (sqrId === 'sqr3') {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
           gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
         };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue1;
+        gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue1;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
@@ -436,6 +439,7 @@ const gameBoard = (() => {
         };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
+        gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue2;
         gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
       } else if (sqrId === 'sqr5') {
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
@@ -461,6 +465,7 @@ const gameBoard = (() => {
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
         gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue1;
+        gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
         gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
         gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue1;
       } else if (sqrId === 'sqr8') {
