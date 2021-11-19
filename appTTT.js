@@ -397,8 +397,13 @@ const gameBoard = (() => {
       if (sqrId === 'sqr1') {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
           gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue2;
+          gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
+          gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
+          gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
         };
-        gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
+        if (gameBoardSqrs[0].sqrStatusLocked === true && gameBoardSqrs[0].playerSqr === true && gameBoardSqrs[2].sqrStatusLocked === true && gameBoardSqrs[2].playerSqr === true) {
+          gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
+        }
         gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue1;
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
@@ -412,6 +417,9 @@ const gameBoard = (() => {
           gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
           gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
           gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
+          gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
+          gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
+          gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
         };
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[2].sqrValue = gameBoardSqrs[2].sqrValue + newSqrValue2;
@@ -420,9 +428,12 @@ const gameBoard = (() => {
       } else if (sqrId === 'sqr3') {
         if (gameBoardSqrs[4].sqrStatusLocked === true && gameBoardSqrs[4].playerSqr === true) {
           gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
+          gameBoardSqrs[6].sqrValue = gameBoardSqrs[6].sqrValue + newSqrValue2;
         };
+        if (gameBoardSqrs[0].sqrStatusLocked === true && gameBoardSqrs[0].playerSqr === true && gameBoardSqrs[2].sqrStatusLocked === true && gameBoardSqrs[2].playerSqr === true) {
+          gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
+        }
         gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue1;
-        gameBoardSqrs[0].sqrValue = gameBoardSqrs[0].sqrValue + newSqrValue2;
         gameBoardSqrs[1].sqrValue = gameBoardSqrs[1].sqrValue + newSqrValue2;
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue1;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
@@ -465,7 +476,6 @@ const gameBoard = (() => {
         gameBoardSqrs[3].sqrValue = gameBoardSqrs[3].sqrValue + newSqrValue2;
         gameBoardSqrs[4].sqrValue = gameBoardSqrs[4].sqrValue + newSqrValue2;
         gameBoardSqrs[5].sqrValue = gameBoardSqrs[5].sqrValue + newSqrValue1;
-        gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
         gameBoardSqrs[7].sqrValue = gameBoardSqrs[7].sqrValue + newSqrValue2;
         gameBoardSqrs[8].sqrValue = gameBoardSqrs[8].sqrValue + newSqrValue1;
       } else if (sqrId === 'sqr8') {
@@ -546,7 +556,7 @@ const gameBoard = (() => {
           let n1 = gameBoardSqrs[`${nAi - 1}`].sqrValue;
           let n2 = gameBoardSqrs[`${nAi}`].sqrValue;
           let n3 = 0;
-          if (n1 >= n2 && gameBoardSqrs[`${nAi - 1}`].sqrStatusLocked === false || n1 >= smartAiValue && gameBoardSqrs[`${nAi - 1}`].sqrStatusLocked === false) {
+          if (n1 >= n2 && gameBoardSqrs[`${nAi - 1}`].sqrStatusLocked === false || n1 <= n2 && gameBoardSqrs[`${nAi}`].sqrStatusLocked === true) {
             console.log('%c change ai values', 'color: red')
             n3 = n1;
             n1Choice = true;
